@@ -1,0 +1,3 @@
+# 301 Redirect URLs.
+Redirect 301 /contact /index?p=contact
+Redirect 301 /services /index?p=services
