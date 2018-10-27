@@ -1,43 +1,32 @@
 import React, { Component } from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import HomePage from './pages/Home';
 import ErrorPage from './pages/Error';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import './Container.scss';
+import AboutPage from './pages/About';
+import ServicesPage from './pages/Services';
+import OurWorkPage from './pages/OurWork';
+import ContactPage from './pages/Contact';
 import './Container.css';
-
-const pages = {
-  HOME: 'home',
-  ABOUT: 'about',
-  SERVICES: 'services',
-  OUR_WORK: 'our_work',
-  CONTACT: 'contact'
-};
 
 class Container extends Component {
 
   state = {
-    page: pages.HOME
-  }
-
-  getPage = () => {
-    switch (this.state.page) {
-      case pages.HOME:
-        return (<HomePage />);
-        break;
-      default:
-        return (<ErrorPage />);
-        break;
-    }
   }
 
   render() {
     return (
-      <div className="container">
-        <Header />
-          {this.getPage()}
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div className="container">
+          <Switch>
+            <Route exact path='/' component={HomePage}/>
+            <Route path='/about' component={AboutPage}/>
+            <Route path='/services' component={ServicesPage}/>
+            <Route path='/our-work' component={OurWorkPage}/>
+            <Route path='/contact' component={ContactPage}/>
+            <Route path="/" component={ErrorPage}/>
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

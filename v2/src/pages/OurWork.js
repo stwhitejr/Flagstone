@@ -1,14 +1,13 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import './Home.css';
 
-const HomePage = props =>  (
-  <div className="Home">
+const OurWorkPage = props => (
+  <div>
     <Header />
-      home page
+    OurWork
     <Footer />
   </div>
 );
 
-export default HomePage;
+export default OurWorkPage;
