@@ -1,0 +1,19 @@
+@import '../scss/variables.scss';
+
+.TextBlock {
+  padding: 20px;
+  max-width: 70%;
+  margin: 0 auto;
+  @include bp-mobile() {
+    max-width: 100%;
+  }
+  &--onDark {
+    color: $color--white;
+  }
+  &--background {
+    background-color: rgba($color--black, .5);
+  }
+  &--centered {
+    text-align: center;
+  }
+}

@@ -1,3 +1,5 @@
+/// @Variables
+// Colors
 $color--blue: #10205B;
 $color--darkBlue: #1F222E;
 $color--lightBlue: #7D849D;
@@ -6,9 +8,63 @@ $color--orange: #C16708;
 $color--darkGrey: #26262B;
 $color--lightGrey: #A9ADBD;
 $color--white: #EAEAEA;
+$color--black: #000;
+$colors: (
+  primary: $color--blue,
+  primaryDark: $color--darkBlue,
+  primaryLight: $color--lightBlue,
+  secondary: $color--teal,
+  tertiary: $color--orange,
+  grey: $color--darkGrey,
+  greyLight: $color--lightGrey,
+  white: $color--white
+);
 
-$fontsize--medium: 25px;
+// Spacing
+$spacingSizes: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10;
+$spacingIncrement: 4;
+$spacingPositions: top, right, bottom, left;
 
+// Fonts
+$fontsize--base: 16px;
+$fontsize--sm: 90%;
+$fontsize--md: 120%;
+$fontsize--lg: 140%;
+$fontsize--xl: 180%;
+$fontsize--xxl: 210%;
+$fontSizes: (
+  base: $fontsize--base,
+  sm: $fontsize--sm,
+  md: $fontsize--md,
+  lg: $fontsize--lg,
+  xl: $fontsize--xl,
+  xxl: $fontsize--xxl
+);
+$fontfamily--base: 'Krub', sans-serif;
 $fontfamily--primary: 'Anton', sans-serif;
+$lineheight: 140%;
 
-$bp--large: 600px;
+// Breakpoints
+$baseWidth: 1024px;
+$bp--xs: 576px;
+$bp--sm: 768px;
+$bp--md: 992px;
+$bp--lg: 1200px;
+$breakPoints: (
+  xs: $bp--xs,
+  sm: $bp--sm,
+  md: $bp--md,
+  lg: $bp--lg
+);
+
+/// @Mixins
+@mixin font-primary() {
+  font-family: $fontfamily--primary;
+  letter-spacing: .7px;
+}
+@mixin bp($point) {
+  @media only screen and (min-width: $point) { @content }
+}
+@mixin bp-mobile() {
+  @media only screen and (max-width: $bp--sm) { @content }
+}

@@ -1,0 +1,91 @@
+@import './variables.scss';
+/// @Utility classes
+// Columns
+$columns: 1,2,3,4,5,6,7,8,9,10,11,12;
+// General Column
+@each $col in $columns {
+  .col-#{$col} {
+    max-width: percentage($col / 12);
+    flex: 0 0 percentage($col / 12);
+  }
+}
+// Mobile only
+@media only screen and (max-width: $bp--sm) {
+  @each $col in $columns {
+    .col-mobile-#{$col} {
+      max-width: percentage($col / 12);
+      flex: 0 0 percentage($col / 12);
+    }
+  }
+}
+// Breakpoint columns
+@each $name, $size in $breakPoints {
+  @include bp($size) {
+    @each $col in $columns {
+      .col-#{$name}-#{$col} {
+        max-width: percentage($col / 12);
+        flex: 0 0 percentage($col / 12);
+      }
+    }
+  }
+}
+// Flex
+.row {
+  display: flex;
+}
+.row-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.align-center {
+  align-items: center;
+}
+
+// Text
+@each $name, $size in $fontSizes {
+  .text-size-#{$name} {
+    font-size: $size;
+  }
+}
+@each $name, $color in $colors {
+  .text-color-#{$name} {
+    color: $color;
+  }
+}
+
+// Blocks
+@each $name, $color in $colors {
+  .block-color-#{$name} {
+    background-color: $color;
+  }
+}
+@each $size in $spacingSizes {
+  @each $position in $spacingPositions {
+    .spacing-#{$position}-#{$size} {
+      padding-#{$position}: $size * $spacingIncrement + px;
+    }
+  }
+}
+
+// Components
+.button {
+  display: inline-block;
+  padding: 12px;
+  background-color: $color--teal;
+  color: $color--white;
+  text-align: center;
+  &:hover {
+    background-color: darken($color--teal, 5%);
+  }
+}
+
+// Misc
+.width-base {
+  max-width: $baseWidth;
+  margin: 0 auto;
+}
+.full-height {
+  @include bp($bp--sm) {
+    height: 100%;
+  }
+}

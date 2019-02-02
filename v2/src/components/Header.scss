@@ -1,31 +1,39 @@
 @import '../scss/variables.scss';
 
 .Header {
+  &-wrap {
+    left: 0;
+    right: 0;
+    top: 0;
+    @include bp($bp--sm) {
+      position: sticky;
+    }
+  }
   padding: 20px;
-  background-color: rgba($color--blue, .5);
+  background-color: rgba($color--blue, .8);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  @media only screen and (max-width: $bp--large) {
-    display: block;
+  @include bp-mobile() {
+    flex-wrap: wrap;
   }
   &-logo {
     width: 400px;
     max-width: 40%;
+    @include bp-mobile() {
+      max-width: 70%;
+    }
   }
   &-nav {
-    min-width: 40%;
     display: flex;
-    justify-content: space-between;
-    @media only screen and (max-width: $bp--large) {
+    padding-left: 10px;
+    @include bp-mobile() {
       display: none;
       width: 100%;
       flex-direction: column;
       text-align: center;
+      margin-top: 8px;
+      padding: 0;
       &--active {
         display: block;
       }
@@ -33,26 +41,41 @@
   }
   &-mobileNavButton {
     display: none;
-    @media only screen and (max-width: $bp--large) {
-      display: block;
+    @include bp-mobile() {
+      display: inline-block;
+      color: $color--white;
+      font-size: 250%;
+      background-color: rgba($color--teal, .2);
+      padding: 8px;
+      border-radius: 5px;
+      cursor: pointer;
     }
   }
   &-navItem {
-    padding: 0 30px 0 5px;
+    @include font-primary();
+    padding: 0 20px 0 5px;
     color: $color--lightGrey;
-    font-size: $fontsize--medium;
-    border-left: solid 3px rgba($color--blue, .5);
-    @media only screen and (max-width: $bp--large) {
+    font-size: $fontsize--md;
+    text-transform: lowercase;
+    border-left: solid 3px transparent;
+    white-space: nowrap;
+    transition: color .5s;
+    @include bp($bp--lg) {
+      font-size: $fontsize--xl;
+      padding-right: 30px;
+    }
+    @include bp-mobile() {
       display: block;
       border-left: 0;
-      background-color: rgba($color--teal, .2); 
+      background-color: rgba($color--teal, .2);
       margin-bottom: 5px;
+      padding: 12px;
     }
     &:hover,
     &--active {
       color: $color--white;
       border-color: $color--teal;
-      @media only screen and (max-width: $bp--large) {
+      @include bp-mobile() {
         background-color: $color--teal;
       }
     }

@@ -1,0 +1,8 @@
+@import './scss/variables.scss';
+.Page {
+  background-image: url('https://iso.500px.com/wp-content/uploads/2014/06/W4A2827-1-3000x2000.jpg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
